@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Brand — Speaking · Caroline</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0b09;--ink2:#35302a;--ink3:#7a7468;
+  --bg:#f8f5f0;--s2:#ede9e0;--s3:#ddd8cc;
+  --acc:#1a6a52;--al:#e5f2ed;
+  --ok:#1a6248;--okl:#e2f2eb;
+  --warn:#7a5800;--warnl:#fff8e1;
+  --err:#9a1a1a;--errl:#fceaea;
+  --serif:"DM Serif Display",Georgia,serif;
+  --sans:"DM Sans",system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);margin:0;line-height:1.7}
+.hero{background:var(--ink);padding:2.2rem 2rem 1.8rem;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(26,106,82,.1);pointer-events:none}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.ey{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,106,82,.7);margin-bottom:.4rem}
+.h1{font-family:var(--serif);font-size:clamp(1.7rem,4.5vw,2.5rem);color:white;line-height:1.1;margin-bottom:.5rem}
+.h1 em{font-style:italic;color:#7fdbc4}
+.sub{font-size:13px;color:rgba(255,255,255,.4);max-width:520px;line-height:1.6}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:.8rem}
+.pill{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(26,106,82,.2);color:#7fdbc4}
+
+.nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:100}
+.nw{max-width:860px;margin:0 auto;display:flex;overflow-x:auto;padding:0 2rem}
+.tab{font-family:var(--sans);font-size:12px;font-weight:500;padding:.8rem 13px;border:none;background:transparent;color:rgba(255,255,255,.35);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s}
+.tab:hover{color:rgba(255,255,255,.7)}
+.tab.on{color:white;border-bottom-color:var(--acc)}
+
+.page{display:none;max-width:860px;margin:0 auto;padding:2.2rem 1.5rem 5rem}
+.page.on{display:block}
+
+.sl{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.sl::after{content:"";flex:1;height:.5px;background:var(--s3)}
+
+/* Reference strip */
+.ref-strip{background:white;border:1px solid var(--s3);border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.8rem}
+.ref-label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:.7rem}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.ref-item{background:var(--bg);border-radius:8px;padding:9px 12px;border:1px solid var(--s2)}
+.ref-v{font-weight:700;font-size:13px;color:var(--ink)}
+.ref-v span{color:var(--acc)}
+.ref-ex{font-size:11.5px;color:var(--ink3);font-style:italic;margin-top:2px;line-height:1.4}
+
+/* Speaking cards */
+.scard{background:white;border:1.5px solid var(--s3);border-radius:14px;margin-bottom:1.3rem;overflow:hidden}
+.scard-top{padding:1.1rem 1.4rem 1rem}
+.scard-num{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
+.scard-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;background:var(--al);color:var(--acc)}
+.scard-prompt{font-size:15px;line-height:1.65;color:var(--ink);font-weight:500}
+.scard-ctx{font-size:12px;color:var(--ink3);font-style:italic;margin-top:.5rem;padding:6px 10px;background:var(--bg);border-radius:7px;border-left:2px solid var(--s3)}
+
+.scard-bottom{padding:.9rem 1.4rem;background:var(--bg);border-top:1px solid var(--s3);display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+
+/* starters */
+.starters-wrap{flex:1;min-width:200px}
+.starters-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem}
+.starters{display:flex;flex-wrap:wrap;gap:5px}
+.starter{font-size:11.5px;padding:4px 11px;border-radius:100px;background:white;border:1px solid var(--s3);color:var(--ink2)}
+
+/* notes */
+.notes-wrap{flex:1;min-width:180px}
+.notes-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem}
+.notes-input{width:100%;font-family:var(--sans);font-size:13px;color:var(--ink2);background:white;border:1.5px solid var(--s3);border-radius:8px;padding:8px 10px;resize:none;line-height:1.5}
+.notes-input:focus{outline:none;border-color:var(--acc)}
+
+/* timer */
+.timer-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0}
+.timer-ring{position:relative;width:72px;height:72px}
+.timer-ring svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--s3);stroke-width:5}
+.ring-fg{fill:none;stroke:var(--acc);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .9s linear, stroke .3s}
+.timer-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink2)}
+.timer-btn{font-family:var(--sans);font-size:11px;font-weight:600;padding:4px 14px;border-radius:100px;border:1.5px solid var(--s3);background:white;color:var(--ink2);cursor:pointer;transition:all .12s;white-space:nowrap}
+.timer-btn:hover{background:var(--al);border-color:var(--acc);color:var(--acc)}
+.timer-btn.running{background:var(--errl);border-color:var(--err);color:var(--err)}
+.timer-btn.done{background:var(--okl);border-color:var(--ok);color:var(--ok)}
+
+/* vocab hint */
+.vocab-hint{margin:.9rem 1.4rem .1rem;display:flex;flex-wrap:wrap;gap:5px}
+.vh-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-right:3px;align-self:center}
+.vh-chip{font-size:11.5px;padding:3px 10px;border-radius:100px;background:var(--al);color:var(--acc);font-weight:600;border:1px solid rgba(26,106,82,.15)}
+
+/* progress */
+.prog-row{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.prog-bar{flex:1;background:var(--s3);border-radius:100px;height:4px;overflow:hidden}
+.prog-fill{height:100%;background:var(--acc);border-radius:100px;width:0%;transition:width .5s}
+.prog-txt{font-size:11px;color:var(--ink3);white-space:nowrap}
+
+/* debate */
+.debate-card{background:white;border:1.5px solid var(--s3);border-radius:14px;overflow:hidden;margin-bottom:1.3rem}
+.debate-header{background:var(--ink);padding:.8rem 1.4rem;display:flex;justify-content:space-between;align-items:center}
+.debate-title{font-family:var(--serif);font-size:14px;color:white}
+.debate-label{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;background:rgba(26,106,82,.3);color:#7fdbc4}
+.debate-body{padding:1.2rem 1.4rem}
+.debate-stmt{font-family:var(--serif);font-size:1.15rem;line-height:1.5;color:var(--ink);margin-bottom:1rem;font-style:italic}
+.debate-note{font-size:12px;color:var(--ink3);margin-bottom:1rem}
+.debate-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+.debate-side{background:var(--bg);border-radius:9px;padding:.9rem 1rem}
+.debate-side-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem}
+.debate-side ul{padding-left:14px;font-size:12.5px;color:var(--ink2);line-height:1.7}
+
+/* speaking tips box */
+.tips-box{background:var(--warnl);border:1px solid rgba(122,88,0,.15);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.5rem}
+.tips-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);margin-bottom:.5rem}
+.tips-list{padding-left:15px;font-size:12.5px;color:#5a4000;line-height:1.8}
+
+footer{border-top:1px solid var(--s3);padding:1.1rem 1.5rem;font-size:11px;color:var(--ink3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;max-width:860px;margin:0 auto}
+@media(max-width:600px){
+  .debate-cols{grid-template-columns:1fr}
+  .scard-bottom{flex-direction:column}
+  .nw{padding:0 .75rem}.tab{font-size:11px;padding:.75rem 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="ey">C1 &middot; Personal Brand &middot; Speaking &middot; Caroline</p>
+    <h1 class="h1">Say it out <em>loud.</em></h1>
+    <p class="sub">Tres partes de speaking com vocabulario de personal brand. Contexto: marketing corporativo, JDE Peet&rsquo;s. Timers ajustaveis para cada prompt.</p>
+    <div class="pills">
+      <span class="pill">communicate BY</span>
+      <span class="pill">shape THROUGH</span>
+      <span class="pill">align WITH</span>
+      <span class="pill">build trust BY</span>
+      <span class="pill">cultivate connections WITH</span>
+      <span class="pill">differentiate BY</span>
+      <span class="pill">establish BY</span>
+      <span class="pill">create a narrative BY</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nw">
+    <button class="tab on" onclick="go('t1',this)">Warm-up</button>
+    <button class="tab" onclick="go('t2',this)">Situacoes reais</button>
+    <button class="tab" onclick="go('t3',this)">Debate</button>
+  </div>
+</nav>
+
+<!-- ============================================================ TAB 1 -->
+<div class="page on" id="t1">
+  <div class="ref-strip">
+    <p class="ref-label">Collocations essenciais</p>
+    <div class="ref-grid">
+      <div class="ref-item"><p class="ref-v">communicate <span>by</span></p><p class="ref-ex">communicate value <em>by</em> doing sth</p></div>
+      <div class="ref-item"><p class="ref-v">shape <span>through</span></p><p class="ref-ex">shape reputation <em>through</em> sth</p></div>
+      <div class="ref-item"><p class="ref-v">align <span>with</span></p><p class="ref-ex">align actions <em>with</em> strategy</p></div>
+      <div class="ref-item"><p class="ref-v">build trust <span>by</span></p><p class="ref-ex">build trust <em>by</em> doing sth</p></div>
+      <div class="ref-item"><p class="ref-v">cultivate connections <span>with</span></p><p class="ref-ex">cultivate connections <em>with</em> sb</p></div>
+      <div class="ref-item"><p class="ref-v">differentiate <span>by</span></p><p class="ref-ex">differentiate herself <em>by</em> doing sth</p></div>
+      <div class="ref-item"><p class="ref-v">establish brand <span>by</span></p><p class="ref-ex">establish her brand <em>by</em> doing sth</p></div>
+      <div class="ref-item"><p class="ref-v">create a narrative <span>by</span></p><p class="ref-ex">create a narrative <em>by</em> doing sth</p></div>
+    </div>
+  </div>
+
+  <div class="tips-box">
+    <p class="tips-title">Como usar este exercicio</p>
+    <ul class="tips-list">
+      <li>Clique em <strong>Iniciar</strong> e fale enquanto o timer corre. Sem pausar para pensar por muito tempo.</li>
+      <li>Tente usar ao menos <strong>duas collocations</strong> por resposta.</li>
+      <li>Use o campo de notas para palavras-chave antes de comecar.</li>
+    </ul>
+  </div>
+
+  <div class="prog-row"><div class="prog-bar"><div class="prog-fill" id="pf1"></div></div><span class="prog-txt" id="pl1">0 / 4</span></div>
+  <p class="sl">Warm-up &mdash; respostas rapidas de 30 segundos</p>
+
+  <!-- Card 1 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Prompt 1</span><span class="scard-tag">30s</span></div>
+      <p class="scard-prompt">How do you communicate your value to someone who doesn&rsquo;t work in marketing &mdash; for example, a colleague from finance?</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">communicate BY</span>
+      <span class="vh-chip">differentiate BY</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">I communicate my value by…</span>
+          <span class="starter">What makes my role different is…</span>
+          <span class="starter">I differentiate myself by…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave (antes de falar)</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: cross-brand strategy, data translation..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t1-1" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t1-1">30</div>
+        </div>
+        <button class="timer-btn" id="btn-t1-1" onclick="startTimer('t1-1',30,'pf1','pl1',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Prompt 2</span><span class="scard-tag">30s</span></div>
+      <p class="scard-prompt">What do you actively do to build trust when you start working with someone new &mdash; a new client, a new colleague from London or Mumbai?</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">build trust BY</span>
+      <span class="vh-chip">cultivate connections WITH</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">I build trust by…</span>
+          <span class="starter">One thing I always do is…</span>
+          <span class="starter">I cultivate connections with… by…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: follow up, listen first, share context..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t1-2" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t1-2">30</div>
+        </div>
+        <button class="timer-btn" id="btn-t1-2" onclick="startTimer('t1-2',30,'pf1','pl1',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Prompt 3</span><span class="scard-tag">30s</span></div>
+      <p class="scard-prompt">How would you describe your professional reputation? What have you done to shape it?</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">shape THROUGH</span>
+      <span class="vh-chip">establish BY</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">I&rsquo;ve shaped my reputation through…</span>
+          <span class="starter">People know me for…</span>
+          <span class="starter">I established my brand by…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: multi-brand thinking, commodity insight..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t1-3" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t1-3">30</div>
+        </div>
+        <button class="timer-btn" id="btn-t1-3" onclick="startTimer('t1-3',30,'pf1','pl1',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Prompt 4</span><span class="scard-tag">30s</span></div>
+      <p class="scard-prompt">What makes you different from other marketing professionals who work with coffee brands?</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">differentiate BY</span>
+      <span class="vh-chip">create a narrative BY</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">What differentiates me is…</span>
+          <span class="starter">I differentiate myself by…</span>
+          <span class="starter">I create my narrative by…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: Pilao vs Caboclo, regional identity..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t1-4" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t1-4">30</div>
+        </div>
+        <button class="timer-btn" id="btn-t1-4" onclick="startTimer('t1-4',30,'pf1','pl1',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ TAB 2 -->
+<div class="page" id="t2">
+  <div class="tips-box">
+    <p class="tips-title">Situacoes reais</p>
+    <ul class="tips-list">
+      <li>Cada prompt simula uma situacao real no seu trabalho na JDE Peet&rsquo;s.</li>
+      <li>Voce tem <strong>60 segundos</strong>. Estruture: contexto → acao → resultado.</li>
+      <li>Tente usar <strong>pelo menos tres</strong> collocations de personal brand.</li>
+    </ul>
+  </div>
+
+  <div class="prog-row"><div class="prog-bar"><div class="prog-fill" id="pf2"></div></div><span class="prog-txt" id="pl2">0 / 4</span></div>
+  <p class="sl">Situacoes &mdash; 60 segundos por prompt</p>
+
+  <!-- Situacao 1 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Situacao 1</span><span class="scard-tag">60s</span></div>
+      <p class="scard-prompt">David from London HQ asks you in a call: <em>&ldquo;Caroline, can you walk me through how you position Pil&atilde;o vs Caboclo for different consumer segments?&rdquo;</em></p>
+      <p class="scard-ctx">Contexto: voce esta apresentando sua estrategia de portfolio. David nao conhece o mercado brasileiro a fundo.</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">differentiate BY</span>
+      <span class="vh-chip">create a narrative BY</span>
+      <span class="vh-chip">shape THROUGH</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">We differentiate the brands by…</span>
+          <span class="starter">Each brand shapes its reputation through…</span>
+          <span class="starter">We create a distinct narrative by…</span>
+          <span class="starter">What makes Pilao different is…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: premium vs popular, regional identity, consumer profile..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t2-1" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t2-1">60</div>
+        </div>
+        <button class="timer-btn" id="btn-t2-1" onclick="startTimer('t2-1',60,'pf2','pl2',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Situacao 2 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Situacao 2</span><span class="scard-tag">60s</span></div>
+      <p class="scard-prompt">You&rsquo;re in your first meeting with a new cross-functional stakeholder &mdash; someone from the supply chain team who doesn&rsquo;t know marketing. How do you introduce yourself and establish credibility quickly?</p>
+      <p class="scard-ctx">Contexto: reuniao de alinhamento interdepartamental. O stakeholder nunca trabalhou diretamente com marketing de portfolio.</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">establish BY</span>
+      <span class="vh-chip">communicate BY</span>
+      <span class="vh-chip">align WITH</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">I establish credibility by…</span>
+          <span class="starter">I communicate my value by…</span>
+          <span class="starter">My work aligns with…</span>
+          <span class="starter">What I bring to the table is…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: brand equity, cross-profit, consumer data..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t2-2" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t2-2">60</div>
+        </div>
+        <button class="timer-btn" id="btn-t2-2" onclick="startTimer('t2-2',60,'pf2','pl2',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Situacao 3 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Situacao 3</span><span class="scard-tag">60s</span></div>
+      <p class="scard-prompt">Priya (Mumbai analytics) sends you a report: coffee sales dropped 12% in Q3 in the south region. Your manager asks you to lead the response strategy. How do you present your thinking?</p>
+      <p class="scard-ctx">Contexto: reuniao de crise de performance. Priya e o seu manager estao na chamada. Voce tem 60 segundos para estruturar o plano.</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">align WITH</span>
+      <span class="vh-chip">shape THROUGH</span>
+      <span class="vh-chip">communicate BY</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">I&rsquo;d align our response with…</span>
+          <span class="starter">We can shape the narrative through…</span>
+          <span class="starter">I&rsquo;d communicate the next steps by…</span>
+          <span class="starter">My recommendation is to…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: commodity impact, regional channel, activation plan..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t2-3" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t2-3">60</div>
+        </div>
+        <button class="timer-btn" id="btn-t2-3" onclick="startTimer('t2-3',60,'pf2','pl2',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Situacao 4 -->
+  <div class="scard">
+    <div class="scard-top">
+      <div class="scard-num"><span>Situacao 4</span><span class="scard-tag">60s</span></div>
+      <p class="scard-prompt">A junior colleague asks you: <em>&ldquo;How did you build your reputation here? I&rsquo;ve been here 6 months and I feel invisible. What should I do?&rdquo;</em></p>
+      <p class="scard-ctx">Contexto: conversa informal no almoco. Colega nova, 22 anos, recen-formada. Voce pode falar do que funciona na sua experiencia.</p>
+    </div>
+    <div class="vocab-hint">
+      <span class="vh-label">Use:</span>
+      <span class="vh-chip">build trust BY</span>
+      <span class="vh-chip">cultivate connections WITH</span>
+      <span class="vh-chip">establish BY</span>
+    </div>
+    <div class="scard-bottom">
+      <div class="starters-wrap">
+        <p class="starters-label">Sentence starters</p>
+        <div class="starters">
+          <span class="starter">What helped me was…</span>
+          <span class="starter">I built trust by…</span>
+          <span class="starter">I cultivated connections with… by…</span>
+          <span class="starter">The first thing I&rsquo;d suggest is…</span>
+        </div>
+      </div>
+      <div class="notes-wrap">
+        <p class="notes-label">Palavras-chave</p>
+        <textarea class="notes-input" rows="2" placeholder="Ex: be consistent, volunteer, ask questions..."></textarea>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle class="ring-bg" cx="36" cy="36" r="30"/>
+            <circle class="ring-fg" id="ring-t2-4" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+          </svg>
+          <div class="timer-num" id="num-t2-4">60</div>
+        </div>
+        <button class="timer-btn" id="btn-t2-4" onclick="startTimer('t2-4',60,'pf2','pl2',4)">Iniciar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ TAB 3 -->
+<div class="page" id="t3">
+  <div class="tips-box">
+    <p class="tips-title">Debate</p>
+    <ul class="tips-list">
+      <li>Duas afirmacoes polemicas. Voce <strong>nao precisa concordar</strong> &mdash; defenda uma posicao com argumentos.</li>
+      <li>Estrutura sugerida: <em>position &rarr; reason &rarr; example &rarr; concession &rarr; reinforce</em>.</li>
+      <li>Tempo: <strong>90 segundos</strong>. Use o campo de notas para montar o argumento antes de falar.</li>
+    </ul>
+  </div>
+
+  <div class="prog-row"><div class="prog-bar"><div class="prog-fill" id="pf3"></div></div><span class="prog-txt" id="pl3">0 / 2</span></div>
+  <p class="sl">Debate &mdash; 90 segundos por posicao</p>
+
+  <!-- Debate 1 -->
+  <div class="debate-card">
+    <div class="debate-header">
+      <span class="debate-title">Afirmacao 1</span>
+      <span class="debate-label">90s</span>
+    </div>
+    <div class="debate-body">
+      <p class="debate-stmt">&ldquo;In corporate marketing, personal brand matters more than technical performance.&rdquo;</p>
+      <p class="debate-note">Voce concorda? Discorda? Tem uma posicao mais matizada? Defenda.</p>
+      <div class="debate-cols">
+        <div class="debate-side">
+          <p class="debate-side-label">Para concordar</p>
+          <ul>
+            <li>Visibility shapes career trajectory</li>
+            <li>Trust opens doors before results can</li>
+            <li>Narrative frames how performance is read</li>
+          </ul>
+        </div>
+        <div class="debate-side">
+          <p class="debate-side-label">Para discordar</p>
+          <ul>
+            <li>Results are the foundation of credibility</li>
+            <li>Personal brand without delivery = empty image</li>
+            <li>In data-driven teams, numbers speak louder</li>
+          </ul>
+        </div>
+      </div>
+      <div class="vocab-hint" style="margin:.4rem 0 .9rem">
+        <span class="vh-label">Use:</span>
+        <span class="vh-chip">shape THROUGH</span>
+        <span class="vh-chip">communicate BY</span>
+        <span class="vh-chip">differentiate BY</span>
+        <span class="vh-chip">create a narrative BY</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1;min-width:200px">
+          <p class="starters-label" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem">Sentence starters</p>
+          <div class="starters">
+            <span class="starter">I would argue that…</span>
+            <span class="starter">While it&rsquo;s true that…, I believe…</span>
+            <span class="starter">Personal brand shapes how… through…</span>
+            <span class="starter">That said, you can&rsquo;t differentiate yourself by… without…</span>
+          </div>
+        </div>
+        <div style="flex:1;min-width:180px">
+          <p class="notes-label" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem">Notas</p>
+          <textarea class="notes-input" rows="3" placeholder="Meu argumento: concordo / discordo porque..."></textarea>
+        </div>
+        <div class="timer-wrap">
+          <div class="timer-ring">
+            <svg width="72" height="72" viewBox="0 0 72 72">
+              <circle class="ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="ring-fg" id="ring-t3-1" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+            </svg>
+            <div class="timer-num" id="num-t3-1">90</div>
+          </div>
+          <button class="timer-btn" id="btn-t3-1" onclick="startTimer('t3-1',90,'pf3','pl3',2)">Iniciar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Debate 2 -->
+  <div class="debate-card">
+    <div class="debate-header">
+      <span class="debate-title">Afirmacao 2</span>
+      <span class="debate-label">90s</span>
+    </div>
+    <div class="debate-body">
+      <p class="debate-stmt">&ldquo;Brands like Pil&atilde;o and Caboclo have their own personal brands &mdash; and the marketers behind them should align their personal brand with the brand they manage.&rdquo;</p>
+      <p class="debate-note">Faz sentido um profissional de marketing &ldquo;vestir a camisa&rdquo; da marca que gerencia como parte do seu personal brand?</p>
+      <div class="debate-cols">
+        <div class="debate-side">
+          <p class="debate-side-label">Para concordar</p>
+          <ul>
+            <li>Authenticity builds internal credibility</li>
+            <li>Brand DNA shapes how you think and communicate</li>
+            <li>Alignment signals commitment to leadership</li>
+          </ul>
+        </div>
+        <div class="debate-side">
+          <p class="debate-side-label">Para discordar</p>
+          <ul>
+            <li>Personal brand must outlast any one role</li>
+            <li>Over-identification limits transferability</li>
+            <li>Brands change — you need your own narrative</li>
+          </ul>
+        </div>
+      </div>
+      <div class="vocab-hint" style="margin:.4rem 0 .9rem">
+        <span class="vh-label">Use:</span>
+        <span class="vh-chip">align WITH</span>
+        <span class="vh-chip">establish BY</span>
+        <span class="vh-chip">shape THROUGH</span>
+        <span class="vh-chip">create a narrative BY</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1;min-width:200px">
+          <p class="starters-label" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem">Sentence starters</p>
+          <div class="starters">
+            <span class="starter">To some extent, I align my personal brand with…</span>
+            <span class="starter">I create my professional narrative by…</span>
+            <span class="starter">However, I establish my identity separately by…</span>
+            <span class="starter">The risk is that if you shape your brand through… you might…</span>
+          </div>
+        </div>
+        <div style="flex:1;min-width:180px">
+          <p class="notes-label" style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem">Notas</p>
+          <textarea class="notes-input" rows="3" placeholder="Meu argumento: concordo / discordo porque..."></textarea>
+        </div>
+        <div class="timer-wrap">
+          <div class="timer-ring">
+            <svg width="72" height="72" viewBox="0 0 72 72">
+              <circle class="ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="ring-fg" id="ring-t3-2" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="0"/>
+            </svg>
+            <div class="timer-num" id="num-t3-2">90</div>
+          </div>
+          <button class="timer-btn" id="btn-t3-2" onclick="startTimer('t3-2',90,'pf3','pl3',2)">Iniciar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Personal Brand &middot; Speaking &middot; Caroline &middot; C1</span>
+  <span>communicate by &middot; shape through &middot; align with &middot; build trust by &middot; cultivate with &middot; differentiate by</span>
+</footer>
+
+<script>
+function go(id, btn) {
+  document.querySelectorAll(".page").forEach(function(p){ p.classList.remove("on"); });
+  document.querySelectorAll(".tab").forEach(function(b){ b.classList.remove("on"); });
+  document.getElementById(id).classList.add("on");
+  btn.classList.add("on");
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+var timers = {};
+var completed = {};
+
+function startTimer(id, total, pfId, plId, total_cards) {
+  var btn = document.getElementById("btn-" + id);
+  var num = document.getElementById("num-" + id);
+  var ring = document.getElementById("ring-" + id);
+  var circ = 188.5;
+
+  if (timers[id]) {
+    clearInterval(timers[id]);
+    timers[id] = null;
+    btn.className = "timer-btn";
+    btn.textContent = "Iniciar";
+    num.textContent = total;
+    ring.style.strokeDashoffset = "0";
+    ring.style.stroke = "var(--acc)";
+    return;
+  }
+
+  var remaining = total;
+  btn.className = "timer-btn running";
+  btn.textContent = "Parar";
+
+  timers[id] = setInterval(function() {
+    remaining--;
+    if (remaining <= 0) {
+      clearInterval(timers[id]);
+      timers[id] = null;
+      num.textContent = "0";
+      ring.style.strokeDashoffset = circ.toString();
+      ring.style.stroke = "var(--ok)";
+      btn.className = "timer-btn done";
+      btn.textContent = "Feito";
+      if (!completed[id]) {
+        completed[id] = true;
+        var done = Object.keys(completed).filter(function(k){ return k.indexOf(pfId.replace("pf","t")) === 0; }).length;
+        document.getElementById(pfId).style.width = Math.round(done / total_cards * 100) + "%";
+        document.getElementById(plId).textContent = done + " / " + total_cards;
+      }
+      return;
+    }
+    num.textContent = remaining;
+    var offset = circ * (1 - remaining / total);
+    ring.style.strokeDashoffset = offset.toString();
+    if (remaining <= 10) {
+      ring.style.stroke = "var(--err)";
+    }
+  }, 1000);
+}
+</script>
+</body>
+</html>
